@@ -1,6 +1,6 @@
-require "rspec/core/formatters/base_text_formatter"
+require "rspec/core/formatters/base_formatter"
 
-class KoansFormatter < RSpec::Core::Formatters::BaseTextFormatter
+class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   def initialize(output)
     #puts "==================="
     #puts "entering initialize"
@@ -19,7 +19,7 @@ class KoansFormatter < RSpec::Core::Formatters::BaseTextFormatter
   end
 
   def example_group_started(example_group)
-    #puts "================s==="
+    #puts "==================="
     #puts "entering example_group_started"
     super(example_group)
     #puts "exiting example_group_started"
@@ -30,94 +30,84 @@ class KoansFormatter < RSpec::Core::Formatters::BaseTextFormatter
     #puts "==================="
     #puts "entering example_started"
     super(example)
-    #puts "\t#{example.description}"
     #puts "exiting example_started"
     #puts "==================="
   end
 
   def example_passed(example)
-    puts "About#{example.example_group.description}\##{example.description} has expanded your awareness"
+    #puts "==================="
+    #puts "entering example_passed"
+    @output.puts "About#{example.example_group.description}\##{example.description} has expanded your awareness"
     @passed_count += 1
+    #puts "exiting example_passed"
+    #puts "==================="
   end
 
   def example_pending(example)
-    @pending_count += 1
+    #puts "==================="
+    #puts "entering example_pending"
+    super(example)
+    #puts "exiting example_pending"
+    #puts "==================="
   end
 
   def example_failed(example)
-    if caller.any?{|method| method.include? "run_examples"}
-      puts red("About#{example.example_group.description}\##{example.description} has damaged your karma.")
+    super(example)
+    if caller.any? { |method| method.include? "fail_filtered"}
+      puts "About#{example.example_group.description}\##{example.description} has damaged your karma."
     end
-    @failure_count += 1
     exit
   end
 
-  def message(message)
-    #the system exit message from the example_failed exit line is reported through this method
-    #super(message)
-  end
-
-  def example_group_finished(example_group)
-    super(example_group)
-  end
-
-  def stop
-    super
-  end
-
   def start_dump
+    #puts "==================="
+    #puts "entering start_dump"
     super
     output.puts "#{@passed_count} of #{@example_count} completed"
+    #puts "exiting start_dump"
+    #puts "==================="
   end
 
   def dump_pending
+    #puts "==================="
+    #puts "entering dump_pending"
     super
+    #puts "exiting dump_pending"
+    #puts "==================="
   end
 
   def dump_failures
+    #puts "==================="
+    #puts "entering dump_failures"
     super
+    #puts "exiting dump_failures"
+    #puts "==================="
   end
 
   def dump_summary(duration, example_count, failure_count, pending_count)
-    #super(duration, example_count, failure_count, pending_count)
-  end
-
-  def summary_line(example_count, failure_count, pending_count)
-    #called from dump_summary
-    super(example_count, failure_count, pending_count)
-  end
-
-  def colorise_summary(summary)
-    #called from dump_summary
-    super(summary)
-  end
-
-  def dump_commands_to_rerun_failed_examples
-    #shows the line that failed and the file it failed in
-    super
-  end
-
-  def dump_profile
-    puts "==================="
-    puts "entering dump_profile"
-    super
-    puts "exiting dump_profile"
-    puts "==================="
+    #puts "==================="
+    #puts "entering dump_summary"
+    super(duration, example_count, failure_count, pending_count)
+    #puts "exiting dump_summary"
+    #puts "==================="
   end
 
   def format_backtrace(backtrace, example)
-    puts "==================="
-    puts "entering format_backtrace"
+    #puts "==================="
+    #puts "entering format_backtrace"
     super(backtrace, example)
-    puts "exiting format_backtrace"
-    puts "==================="
+    #puts "exiting format_backtrace"
+    #puts "==================="
   end
 
   def close
+    #puts "==================="
+    #puts "entering close"
     super
+    #puts "exiting close"
+    #puts "==================="
   end
 
 end
 
-#initialize
-#- (Object) seed(number)
+

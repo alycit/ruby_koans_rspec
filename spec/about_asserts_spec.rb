@@ -1,15 +1,16 @@
+require 'spec_helper'
 
 describe "Asserts" do
 
   it "does some stuff" do
-    1.should == 1
+    true.should == true
   end
 
   it "asserts truth" do
-    false.should be_true
+    true.should be_true
   end
 
-  it "does shit" do
+  it "does other stuff" do
     2.should == 2
   end
 
