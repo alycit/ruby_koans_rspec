@@ -37,7 +37,7 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   def example_passed(example)
     #puts "==================="
     #puts "entering example_passed"
-    @output.puts "About#{example.example_group.description}\##{example.description} has expanded your awareness"
+    @output.puts green("About#{example.example_group.description}\##{example.description} has expanded your awareness")
     @passed_count += 1
     #puts "exiting example_passed"
     #puts "==================="
@@ -53,8 +53,8 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
 
   def example_failed(example)
     super(example)
-    if caller.any? { |method| method.include? "fail_filtered"}
-      puts "About#{example.example_group.description}\##{example.description} has damaged your karma."
+    if caller.any? { |method| method.include? "fail_filtered" }
+      puts red("About#{example.example_group.description}\##{example.description} has damaged your karma.")
     end
     exit
   end
@@ -106,6 +106,52 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
     super
     #puts "exiting close"
     #puts "==================="
+  end
+
+  protected
+
+  def color(text, color_code)
+    color_enabled? ? "#{color_code}#{text}\e[0m" : text
+  end
+
+  def bold(text)
+    color(text, "\e[1m")
+  end
+
+  def red(text)
+    color(text, "\e[31m")
+  end
+
+  def green(text)
+    color(text, "\e[32m")
+  end
+
+  def yellow(text)
+    color(text, "\e[33m")
+  end
+
+  def blue(text)
+    color(text, "\e[34m")
+  end
+
+  def magenta(text)
+    color(text, "\e[35m")
+  end
+
+  def cyan(text)
+    color(text, "\e[36m")
+  end
+
+  def white(text)
+    color(text, "\e[37m")
+  end
+
+  def short_padding
+    '  '
+  end
+
+  def long_padding
+    '     '
   end
 
 end
