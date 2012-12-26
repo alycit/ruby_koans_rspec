@@ -6,7 +6,7 @@ describe "Asserts" do
   end
 
   it "asserts truth" do
-    true.should be_true
+    false.should be_true
   end
 
   it "does shit" do
