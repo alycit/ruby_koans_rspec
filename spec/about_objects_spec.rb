@@ -37,6 +37,9 @@ describe "Objects" do
     1.object_id.should == __
     2.object_id.should == __
     100.object_id.should == __
+
+    # THINK ABOUT IT:
+    # What pattern do the object IDs for small integers follow?
   end
 
   it "should clone objects to create a different object" do
