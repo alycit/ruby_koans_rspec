@@ -18,8 +18,8 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   end
 
   def example_failed(example)
-    if !failed?
-      @failure = example
+    unless failed?
+      @failure = example.exception
       add_progress(@passed_count)
       @observations << red("About#{example.example_group.description}\##{example.description} has damaged your karma.")
     end
@@ -64,7 +64,7 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   end
 
   def assert_failed?
-    @failure.exception.is_a?(RSpec::Expectations::ExpectationNotMetError)
+    @failure.is_a?(RSpec::Expectations::ExpectationNotMetError)
   end
 
   def encourage
@@ -83,13 +83,13 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   def guide_through_error
     puts
     puts "The answers you seek..."
-    puts red(indent(@failure.exception.message).join)
+    puts red(@failure.message)
     puts
     puts "Please meditate on the following code:"
     if assert_failed?
-      puts embolden_first_line_only(indent(find_interesting_lines(@failure.exception.backtrace)))
+      puts embolden_first_line_only(indent(find_interesting_lines(@failure.backtrace)))
     else
-      puts embolden_first_line_only(indent(@failure.exception.backtrace))
+      puts embolden_first_line_only(indent(@failure.backtrace))
     end
     puts
   end
@@ -142,11 +142,6 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
         cyan(t)
       end
     }
-  end
-
-  def indent(text)
-    text = text.split(/\n/) if text.is_a?(String)
-    text.collect { |t| "  #{t}" }
   end
 
   def find_interesting_lines(backtrace)
