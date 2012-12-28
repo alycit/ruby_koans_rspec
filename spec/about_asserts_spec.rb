@@ -3,12 +3,12 @@ require 'spec_helper'
 describe "Asserts" do
 
   it "does some stuff" do
-    true.should == __
+    true.should == true
   end
 
   it "asserts truth" do
     #might need to monkey patch matchers?
-    true.should be_true
+    __.should be_true
   end
 
   it "does other stuff" do

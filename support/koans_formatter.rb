@@ -144,6 +144,11 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
     }
   end
 
+  def indent(text)
+    text = text.split(/\n/) if text.is_a?(String)
+    text.collect { |t| "  #{t}" }
+  end
+
   def find_interesting_lines(backtrace)
     backtrace.reject { |line|
       line =~ /rspec-expectations|rspec-core|bin/
