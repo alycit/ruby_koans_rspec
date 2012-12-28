@@ -18,7 +18,7 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
   end
 
   def example_failed(example)
-    if @failure.nil?
+    if !failed?
       @failure = example
       add_progress(@passed_count)
       @observations << red("About#{example.example_group.description}\##{example.description} has damaged your karma.")
@@ -194,7 +194,7 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
                       ,::::                         , ,,
                                                   ,,,
     ENDTEXT
-    puts completed
+    puts magenta(completed)
   end
 
   protected
@@ -213,6 +213,14 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
 
   def cyan(text)
     color(text, "\e[36m")
+  end
+
+  def blue(text)
+    color(text, "\e[34m")
+  end
+
+  def magenta(text)
+    color(text, "\e[35m")
   end
 
 end
