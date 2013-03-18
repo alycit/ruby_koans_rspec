@@ -5,6 +5,5 @@ task :default => :spec
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = %w[ --color --require ./support/koans_formatter.rb --format KoansFormatter]
-  # set spec files?  Would it honor the order?
+  t.pattern = "spec/**/path_to_enlightenment.rb"
 end
-

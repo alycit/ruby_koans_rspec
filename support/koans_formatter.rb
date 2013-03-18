@@ -26,6 +26,10 @@ class KoansFormatter < RSpec::Core::Formatters::BaseFormatter
     exit
   end
 
+  def format_backtrace(backtrace, example)
+    super(backtrace, example.metadata)
+  end
+
   def start_dump
     if failed?
       @observations.each { |c| puts c }
