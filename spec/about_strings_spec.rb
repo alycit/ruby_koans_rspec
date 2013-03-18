@@ -149,20 +149,9 @@ EOS
     # Surprised?
   end
 
-  in_ruby_version("1.8") do
-    it "should demonstrate in_ruby_1_8_single_characters_are_represented_by_integers" do
-      ?a.should eql __
-      (?a == 97).should eql __
-
-      (?b == (?a + 1)).should eql __
-    end
-  end
-
-  in_ruby_version("1.9") do
-    it "should demonstrate in_ruby_1_9_single_characters_are_represented_by_strings" do
-      ?a.should eql __
-      (?a == 97).should eql __
-    end
+  it "should demonstrate in_ruby_1_9_single_characters_are_represented_by_strings" do
+    ?a.should eql __
+    (?a == 97).should eql __
   end
 
   it "should demonstrate strings_can_be_split" do
