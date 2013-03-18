@@ -15,6 +15,11 @@ describe "Objects" do
     nil.to_s.should eql __
   end
 
+  it "should be able to be inspected" do
+    123.inspect.should eql __
+    nil.inspect.should eql __
+  end
+
   it "should show that objects have ids" do
     obj = Object.new
     obj.object_id.class.should == __

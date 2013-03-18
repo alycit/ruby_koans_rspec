@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe "Nil" do
 
   it "should show that nil is an object" do
