@@ -14,7 +14,7 @@ describe "to_str" do
   end
 
   it "should demonstrate normally_objects_cannot_be_used_where_strings_are_expected" do
-    expect(File.exist?(CanNotBeTreatedAsString.new)).should raise_error(__)
+    expect(File.exist?(CanNotBeTreatedAsString.new)).to raise_error(__)
   end
 
   # ------------------------------------------------------------------

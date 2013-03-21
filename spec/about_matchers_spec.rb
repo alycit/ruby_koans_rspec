@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Asserts" do
+describe "Matchers" do
 
   it "should allow matching with equality operator" do
     true.should == false

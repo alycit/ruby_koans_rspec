@@ -41,8 +41,10 @@ describe "Inheritance" do
     chico = Chihuahua.new("Chico")
     chico.wag.should eql __
 
-    fido = Dog.new("Fido")
-    expect(fido.wag).should raise_error(__)
+    expect{
+      fido = Dog.new("Fido")
+      fido.wag
+    }.to raise_error(__)
 
   end
 
@@ -77,7 +79,7 @@ describe "Inheritance" do
 
   it "should demonstrate super_does_not_work_cross_method" do
     george = GreatDane.new("George")
-    expect(george.growl).should raise_error(__)
+    expect(george.growl).to raise_error(__)
   end
 
 end

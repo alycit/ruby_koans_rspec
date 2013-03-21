@@ -45,7 +45,7 @@ describe "Class Methods" do
       :fidos_wag
     end
 
-    expect(rover.wag).should raise_error(__)
+    expect(rover.wag).to raise_error(__)
   end
 
   # ------------------------------------------------------------------

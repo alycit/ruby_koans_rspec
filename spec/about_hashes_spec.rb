@@ -24,9 +24,7 @@ describe "Hashes" do
   it "should demonstrate accessing hashes with fetch" do
     hash = { :one => "uno" }
     hash.fetch(:one).should eql __
-    assert_raise(___) do
-      hash.fetch(:doesnt_exist)
-    end
+    expect{ hash.fetch(:doesnt_exist) }.to raise_error(__)
 
     # THINK ABOUT IT:
     #

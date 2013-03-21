@@ -30,9 +30,9 @@ describe "Classes" do
     fido = Dog2.new
     fido.set_name("Fido")
 
-    expect(fido.name).should raise_error(__)
+    expect(fido.name).to raise_error(__)
 
-    expect(eval "fido.@name").should raise_error(__)
+    expect(eval "fido.@name").to raise_error(__)
 
     # NOTE: Using eval because the above line is a syntax error.
   end
@@ -117,7 +117,7 @@ describe "Classes" do
   end
 
   it "should demonstrate args_to_new_must_match_initialize" do
-    expect(Dog6.new).should raise_error(__)
+    expect(Dog6.new).to raise_error(__)
     # THINK ABOUT IT:
     # Why is this so?
   end

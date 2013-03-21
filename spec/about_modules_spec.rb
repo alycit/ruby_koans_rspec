@@ -13,7 +13,7 @@ describe "Modules" do
   end
 
   it "should demonstrate cant_instantiate_modules" do
-    expect(Nameable.new).should raise_error(__)
+    expect(Nameable.new).to raise_error(__)
   end
 
   # ------------------------------------------------------------------

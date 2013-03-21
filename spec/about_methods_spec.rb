@@ -34,15 +34,9 @@ describe "Methods" do
   # NOTE: wrong number of argument is not a SYNTAX error, but a
   # runtime error.
   it "should demonstrate calling_global_methods_with_wrong_number_of_arguments" do
-    exception = assert_raise(___) do
-      my_global_method
-    end
-    assert_match(/__/, exception.message)
+    expect{ my_global_method }.to raise_error(__, /__/)
 
-    exception = assert_raise(___) do
-      my_global_method(1,2,3)
-    end
-    assert_match(/__/, exception.message)
+    expect{ my_global_method(1,2,3) }.to raise_error(__, /__/)
   end
 
   # ------------------------------------------------------------------
@@ -118,9 +112,7 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_private_methods_with_an_explicit_receiver" do
-    exception = expect(self.my_private_method).to raise_error eql __
-
-    exception.message.should match(/__/)
+    expect(self.my_private_method).to raise_error(__, /__/)
   end
 
   # ------------------------------------------------------------------

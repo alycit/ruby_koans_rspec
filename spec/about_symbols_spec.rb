@@ -85,7 +85,7 @@ describe "Symbols" do
 
   it "should demonstrate symbols_cannot_be_concatenated" do
     # Exceptions will be pondered further down the path
-    expect(:cats + :dogs).should raise_error(__)
+    expect(:cats + :dogs).to raise_error(__)
   end
 
   it "should demonstrate symbols_can_be_dynamically_created" do

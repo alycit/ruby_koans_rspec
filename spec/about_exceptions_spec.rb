@@ -60,6 +60,6 @@ describe "Exceptions" do
   # Sometimes, we must know about the unknown
   it "should demonstrate asserting_an_error_is_raised" do
     # A do-end is a block, a topic to explore more later
-    expect(raise MySpecialError.new("New instances can be raised directly.")).should raise_error(__)
+    expect(raise MySpecialError.new("New instances can be raised directly.")).to raise_error(__)
   end
 end

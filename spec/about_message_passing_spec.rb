@@ -71,21 +71,15 @@ describe "Message Passing" do
   it "should demonstrate sending_undefined_messages_to_a_typical_object_results_in_errors" do
     typical = TypicalObject.new
 
-    exception = raise_error(___) do
-      typical.foobar
-    end
+    expect{ typical.foobar }.to raise_error(__, /__/)
 
-    exception.message.should match(/foobar/)
   end
 
   it "should demonstrate calling_method_missing_causes_the_no_method_error" do
     typical = TypicalObject.new
 
-    exception = raise_error(___) do
-      typical.method_missing(:foobar)
-    end
+    expect{ typical.method_missing(:foobar) }.to raise_error(__, /__/)
 
-    exception.message.should match(/foobar/)
 
     # THINK ABOUT IT:
     #
@@ -150,7 +144,7 @@ describe "Message Passing" do
   it "should demonstrate non_foo_messages_are_treated_normally" do
     catcher = WellBehavedFooCatcher.new
 
-    expect(catcher.normal_undefined_method).should raise_error(__)
+    expect(catcher.normal_undefined_method).to raise_error(__)
   end
 
   # ------------------------------------------------------------------

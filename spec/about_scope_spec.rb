@@ -19,7 +19,7 @@ describe "Scope" do
   end
 
   it "should demonstrate dog_is_not_available_in_the_current_scope" do
-    expect(fido = Dog.new).should raise_error(__)
+    expect(fido = Dog.new).to raise_error(__)
   end
 
   it "should demonstrate you_can_reference_nested_classes_using_the_scope_operator" do
